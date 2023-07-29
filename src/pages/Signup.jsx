@@ -20,7 +20,7 @@ export default function Signup({ setUserToken }) {
     } else {
       try {
         const { data } = await axios.post(
-          "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+          import.meta.env.VITE_API_URL + "/user/signup",
           {
             email,
             username,

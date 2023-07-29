@@ -11,12 +11,9 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log(import.meta.env.VITE_API_URL);
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          import.meta.env.VITE_API_URL + "/offers"
-        );
+        const response = await axios.get("import.meta.env.VITE_API_URL/offers");
 
         //console.log(response.data);
 
@@ -35,7 +32,6 @@ export default function Home() {
   ) : (
     <main>
       <Hero></Hero>
-
       <div className="container offers-bloc">
         {offersList.map((offer) => {
           //console.log("offer>>>", offer.product_price);

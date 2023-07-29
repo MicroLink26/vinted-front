@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/offer.css";
 
@@ -14,11 +14,12 @@ export default function Offer() {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+          `${import.meta.env.VITE_API_URL}/offer/${id}`
         );
 
-        // console.log(data);
+        console.log(data);
         setOfferInfos(data);
+
         setIsLoading(false);
       } catch (error) {
         console.log("catch Offer>>>", error);
@@ -39,7 +40,7 @@ export default function Offer() {
 
         <div>
           <p>{offerInfos.product_price} €</p>
-
+          <p>{offerInfos.product_name}</p>
           <div>
             {offerInfos.product_details.map((elem, index) => {
               //console.log(elem);
@@ -52,8 +53,17 @@ export default function Offer() {
               );
             })}
           </div>
-
-          <button>Acheter</button>
+          <Link
+            to="/payment"
+            state={{
+              title: offerInfos.product_name,
+              price: offerInfos.product_price,
+              id: offerInfos._id,
+            }}
+            className="green-button"
+          >
+            Acheter
+          </Link>
         </div>
       </div>
     </main>

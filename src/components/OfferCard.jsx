@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import avatar from "../assets/avatar.jpeg";
 
 export default function OfferCard({ offer }) {
   return (
@@ -6,7 +7,7 @@ export default function OfferCard({ offer }) {
       <div className="offer-card">
         <div>
           <img
-            src={offer.owner.account.avatar?.secure_url}
+            src={offer.owner.account.avatar?.secure_url || avatar}
             alt=""
             className="avatar"
           />

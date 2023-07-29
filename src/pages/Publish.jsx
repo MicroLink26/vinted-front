@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 window.addEventListener(
   "dragover",
   function (e) {
-    e = e || event;
     e.preventDefault();
   },
   false
@@ -12,7 +11,6 @@ window.addEventListener(
 window.addEventListener(
   "drop",
   function (e) {
-    e = e || event;
     e.preventDefault();
   },
   false
@@ -31,7 +29,7 @@ function Publish({ userToken }) {
   const [published, setEPublished] = useState(false);
   const [previewPicture, setPreviewPicture] = useState(null);
   const [hoverClass, setHoverClass] = useState(false);
-  const token = userToken;
+  //const token = userToken;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -103,11 +101,11 @@ function Publish({ userToken }) {
 
             try {
               const response = await axios.post(
-                "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+                import.meta.env.VITE_API_URL + "/offer/publish",
                 formData,
                 {
                   headers: {
-                    Authorization: "Bearer " + token,
+                    Authorization: "Bearer " + userToken,
                     "Content-Type": "multipart/form-data",
                   },
                 }
