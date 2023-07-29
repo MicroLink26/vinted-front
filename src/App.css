@@ -1,0 +1,154 @@
+.container {
+  width: 1024px;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.BcgImg {
+  background-image: url("https://static.vinted.com/assets/seller-promotion/gender_test/a/banner-wide-7403f719caac875cfeea61593da7fc7e7320c126193b4ff654e4397f54d430ae.jpg");
+  background-size: "cover";
+  background-position: center;
+  height: 628px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+.inBcgImg {
+  max-width: 1200px;
+  margin: auto;
+  padding-top: 150px;
+}
+.inBcgImg > div {
+  width: 332px;
+  height: 250px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.BcgImg > img {
+  height: 80px;
+  margin-bottom: -20px;
+  width: 50%;
+}
+
+.publish {
+  display: flex;
+  flex-direction: column;
+  background-color: #bcbcbc;
+  height: 100%;
+  gap: 20px;
+}
+
+.publish > form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.publish > form > div {
+  max-width: 1200px;
+  margin: auto;
+  background-color: white;
+  gap: 10px;
+}
+.publishImg {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.publishTitle {
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.publishTitle div {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 300px 0 60px;
+  gap: 20px;
+}
+.descriptionPlace {
+  height: 80px;
+  width: 300px;
+}
+.publishDetail {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px 0;
+  align-items: center;
+}
+.publishDetail input {
+  width: 90%;
+}
+.publishPrice {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  align-items: center;
+  padding: 10px 0;
+}
+.publishPrice input {
+  width: 90%;
+}
+
+img.preview {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: gray;
+}
+
+.inputfile + label {
+  cursor: pointer; /* "hand" cursor */
+}
+.inputfile:focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+.inputfile + label * {
+  pointer-events: none;
+}
+.inputfile + label * {
+  pointer-events: none;
+}
+
+#drop_zone {
+  border: 1px black dotted;
+  width: 200px;
+  height: 100px;
+}
+.drop-hover {
+  border: 1px gray dotted;
+  background-color: lightgrey;
+}
