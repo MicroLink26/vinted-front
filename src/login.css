@@ -1,0 +1,14 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: auto;
+  width: 275px;
+}
+
+.login-form > input {
+  border: none;
+  height: 35px;
+  margin-bottom: 20px;
+}

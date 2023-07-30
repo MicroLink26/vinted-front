@@ -30,8 +30,12 @@ export default function Header({ userToken, setUserToken }) {
             </>
           ) : (
             <>
-              <Link to="/signup">S'inscrire</Link>
-              <Link to="/login">Se connecter</Link>
+              <Link to="/signup" className="header-button">
+                S'inscrire
+              </Link>
+              <Link to="/login" className="header-button">
+                Se connecter
+              </Link>
             </>
           )}
         </div>

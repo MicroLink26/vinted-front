@@ -1,6 +1,3 @@
-header {
-  border-bottom: 1px solid black;
-}
 header .container {
   display: flex;
   justify-content: space-between;
@@ -10,4 +7,41 @@ header .container {
 header .container > div {
   display: flex;
   gap: 20px;
+}
+
+.hero {
+  background-image: url("https://static.vinted.com/assets/seller-promotion/gender_test/a/banner-wide-7403f719caac875cfeea61593da7fc7e7320c126193b4ff654e4397f54d430ae.jpg");
+  background-size: "cover";
+  background-position: center;
+  height: 628px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+.hero-body {
+  max-width: 1200px;
+  margin: auto;
+  padding-top: 150px;
+}
+.hero-body > div {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 2px hsla(0, 0%, 7%, 0.24);
+  display: flex;
+  flex-direction: column;
+  font-size: 34px;
+  height: 220px;
+  justify-content: space-around;
+  padding: 25px;
+  position: absolute;
+  top: 175px;
+  left: 75px;
+  width: 360px;
+  font-family: "Open Sans", sans-serif;
+}
+.hero > img {
+  height: 80px;
+  margin-bottom: -20px;
+  width: 50%;
 }

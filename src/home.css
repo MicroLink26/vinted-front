@@ -1,6 +1,5 @@
 .offer-card {
   width: 235px;
-  padding: 5px;
 }
 .offer-card > div:first-child {
   display: flex;
@@ -19,6 +18,6 @@
 }
 .offer-card > img {
   width: 100%;
-  min-height: 250px;
+  height: 360px;
   object-fit: contain;
 }

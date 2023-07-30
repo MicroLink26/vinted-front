@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 const Hero = () => {
   return (
-    <div className="BcgImg">
-      <div className="inBcgImg">
-        <div className="itemBloc">
+    <div className="hero">
+      <div className="hero-body">
+        <div>
           <p>Prêts à faire du tri dans vos placards ?</p>
-          <Link to="/publish">
-            <button> Commencez à vendre</button>
+          <Link to="/publish" className="publish-button">
+            Commencez à vendre
           </Link>
-          <a href="">Découvrir coment ca marche</a>
         </div>
       </div>
       <img

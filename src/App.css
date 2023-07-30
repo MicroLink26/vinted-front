@@ -6,38 +6,13 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
-.BcgImg {
-  background-image: url("https://static.vinted.com/assets/seller-promotion/gender_test/a/banner-wide-7403f719caac875cfeea61593da7fc7e7320c126193b4ff654e4397f54d430ae.jpg");
-  background-size: "cover";
-  background-position: center;
-  height: 628px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: end;
+h2 {
+  font-size: 24px;
+  font-weight: 400;
 }
-.inBcgImg {
-  max-width: 1200px;
-  margin: auto;
-  padding-top: 150px;
+body {
+  font-family: "Open Sans", sans-serif;
 }
-.inBcgImg > div {
-  width: 332px;
-  height: 250px;
-  background-color: white;
-  border-radius: 5px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.BcgImg > img {
-  height: 80px;
-  margin-bottom: -20px;
-  width: 50%;
-}
-
 .publish {
   display: flex;
   flex-direction: column;
@@ -194,4 +169,47 @@ img.preview {
   border-color: transparent;
   color: white;
   background-color: #c1175c;
+}
+
+.header-button {
+  border: 1px solid #2cb1ba;
+  appearance: none;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  opacity: 1;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 11px;
+  color: #2cb1ba;
+}
+
+.publish-button {
+  appearance: none;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  opacity: 1;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 11px;
+  border-color: transparent;
+  color: white;
+  background-color: #2cb1ba;
 }

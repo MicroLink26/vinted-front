@@ -17,6 +17,7 @@ export default function OfferCard({ offer }) {
         <img src={offer.product_image.secure_url} alt="" />
 
         <div>
+          <p>{offer.product_name}</p>
           <p>{offer.product_price} €</p>
         </div>
       </div>

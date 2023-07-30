@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../components/Spinner";
 window.addEventListener(
   "dragover",
   function (e) {
@@ -29,7 +30,7 @@ function Publish({ userToken }) {
   const [published, setEPublished] = useState(false);
   const [previewPicture, setPreviewPicture] = useState(null);
   const [hoverClass, setHoverClass] = useState(false);
-  //const token = userToken;
+  const [processing, setProcessing] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,29 +38,10 @@ function Publish({ userToken }) {
   }, []);
 
   const dropHandler = (ev) => {
-    //console.log("File(s) dropped");
-
-    // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
-    //console.log(ev.dataTransfer);
 
     setFile(ev.dataTransfer.files[0]);
     setPreviewPicture(URL.createObjectURL(ev.dataTransfer.files[0]));
-    // if (ev.dataTransfer.items) {
-    //   // Use DataTransferItemList interface to access the file(s)
-    //   [...ev.dataTransfer.items].forEach((item, i) => {
-    //     // If dropped items aren't files, reject them
-    //     if (item.kind === "file") {
-    //       const file = item.getAsFile();
-    //       console.log(`… file[${i}].name = ${file.name}`);
-    //     }
-    //   });
-    // } else {
-    //   // Use DataTransfer interface to access the file(s)
-    //   [...ev.dataTransfer.files].forEach((file, i) => {
-    //     console.log(`… file[${i}].name = ${file.name}`);
-    //   });
-    //}
   };
 
   const dragOverHandler = (ev) => {
@@ -72,7 +54,46 @@ function Publish({ userToken }) {
     setPreviewPicture(URL.createObjectURL(event.target.files[0]));
   };
 
-  return (
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setProcessing(true);
+    const formData = new FormData();
+    formData.append("picture", file);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("brand", marque);
+    formData.append("size", taille);
+    formData.append("color", couleur);
+    formData.append("condition", etat);
+    formData.append("city", lieu);
+    formData.append("price", prix);
+    formData.append("exchange", exchange);
+
+    try {
+      const response = await axios.post(
+        import.meta.env.VITE_API_URL + "/offer/publish",
+        formData,
+        {
+          headers: {
+            Authorization: "Bearer " + userToken,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      setEPublished(true);
+      setProcessing(false);
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.error("An error occurred");
+      } else {
+        console.error(err.response.data);
+      }
+    }
+  };
+
+  return processing ? (
+    <Spinner />
+  ) : (
     <div className="publish">
       <p>Vends ton article</p>
 
@@ -84,41 +105,7 @@ function Publish({ userToken }) {
           onDrop={(e) => {
             e.preventDefault;
           }}
-          onSubmit={async (e) => {
-            e.preventDefault();
-
-            const formData = new FormData();
-            formData.append("picture", file);
-            formData.append("title", title);
-            formData.append("description", description);
-            formData.append("brand", marque);
-            formData.append("size", taille);
-            formData.append("color", couleur);
-            formData.append("condition", etat);
-            formData.append("city", lieu);
-            formData.append("price", prix);
-            formData.append("exchange", exchange);
-
-            try {
-              const response = await axios.post(
-                import.meta.env.VITE_API_URL + "/offer/publish",
-                formData,
-                {
-                  headers: {
-                    Authorization: "Bearer " + userToken,
-                    "Content-Type": "multipart/form-data",
-                  },
-                }
-              );
-              setEPublished(true);
-            } catch (err) {
-              if (err.response.status === 500) {
-                console.error("An error occurred");
-              } else {
-                console.error(err.response.data);
-              }
-            }
-          }}
+          onSubmit={handleSubmit}
         >
           <div className="publishImg">
             {previewPicture ? (

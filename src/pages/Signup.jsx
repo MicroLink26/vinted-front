@@ -45,49 +45,48 @@ export default function Signup({ setUserToken }) {
   };
 
   return (
-    <main>
-      <div className="container">
+    <main className="container">
+      <form onSubmit={handleSubmit} className="login-form">
         <h1>S'inscrire</h1>
 
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="username"
-            value={username}
-            onChange={(event) => {
-              // vider le message d'erreur
-              setErrorMessage("");
-              //   envoyer la valeur entrée dans le champs au state
-              setUsername(event.target.value);
-            }}
-          />
+        <input
+          type="text"
+          name="username"
+          id="username"
+          placeholder="username"
+          value={username}
+          onChange={(event) => {
+            // vider le message d'erreur
+            setErrorMessage("");
+            //   envoyer la valeur entrée dans le champs au state
+            setUsername(event.target.value);
+          }}
+        />
 
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="email"
-            value={email}
-            onChange={(event) => {
-              setErrorMessage("");
-              setEmail(event.target.value);
-            }}
-          />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="email"
+          value={email}
+          onChange={(event) => {
+            setErrorMessage("");
+            setEmail(event.target.value);
+          }}
+        />
 
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="password"
-            value={password}
-            onChange={(event) => {
-              setErrorMessage("");
-              setPassword(event.target.value);
-            }}
-          />
-
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="password"
+          value={password}
+          onChange={(event) => {
+            setErrorMessage("");
+            setPassword(event.target.value);
+          }}
+        />
+        <label htmlFor="newsletter">
           <input
             type="checkbox"
             name="newsletter"
@@ -97,13 +96,13 @@ export default function Signup({ setUserToken }) {
               setNewsletter(!newsletter);
             }}
           />
-          <label htmlFor="newsletter"> Newsletter</label>
+          S'inscrire à la newsletter
+        </label>
 
-          <button>S'inscrire</button>
+        <button>S'inscrire</button>
 
-          {errorMessage && <p>{errorMessage}</p>}
-        </form>
-      </div>
+        {errorMessage && <p>{errorMessage}</p>}
+      </form>
     </main>
   );
 }
