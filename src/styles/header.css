@@ -45,3 +45,27 @@ header .container > div {
   margin-bottom: -20px;
   width: 50%;
 }
+.search-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.search-input {
+  background-color: #f5f6f7;
+  border: none;
+  border-radius: 5px;
+  font-family: Maison Neue;
+  font-size: 16px;
+  height: 37px;
+  outline: none;
+  padding-left: 40px;
+  width: 590px;
+  margin: auto;
+}
+
+.search-input-icon {
+  color: #bbb;
+  left: 7px;
+  position: absolute;
+  top: 16px;
+}

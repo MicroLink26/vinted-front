@@ -95,7 +95,7 @@ function Publish({ userToken }) {
   return processing ? (
     <Spinner />
   ) : (
-    <main className="container publish">
+    <main className="publish">
       {!published ? (
         <form
           onDrag={(e) => {
@@ -105,7 +105,7 @@ function Publish({ userToken }) {
             e.preventDefault;
           }}
           onSubmit={handleSubmit}
-          className="custom-form"
+          className="custom-form container"
         >
           <h2>Vends ton article</h2>
           <div className="publish-img">

@@ -69,7 +69,7 @@ const CheckoutForm = (props) => {
       <form onSubmit={handleSubmit}>
         <CardElement />
         {errorMessage !== "" && <p>{errorMessage}</p>}
-        <button className="green-button" type="submit">
+        <button className="green-button pay-button " type="submit">
           Valider
         </button>
       </form>

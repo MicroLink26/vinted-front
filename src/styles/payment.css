@@ -1,0 +1,11 @@
+.payment-container {
+  margin: 0 auto;
+  padding: 36px 20px;
+  width: 600px;
+  background-color: white;
+}
+
+.pay-button {
+  margin-top: 20px;
+  width: 100%;
+}

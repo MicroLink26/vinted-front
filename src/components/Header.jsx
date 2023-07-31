@@ -15,11 +15,19 @@ export default function Header({ userToken, setUserToken }) {
   return (
     <header>
       <div className="container">
-        <p>
+        <div>
           <Link to="/">
             <img src={logo} alt="logo"></img>
           </Link>
-        </p>
+          <div class="search-container">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Recherche des articles"
+            ></input>
+            <i class="fa-solid fa-search search-input-icon"></i>
+          </div>
+        </div>
 
         <div>
           {/* S'il y a un token affichage du bouton de déconnexion sinon affichage des boutons pour naviguer vers les pages de connexion */}

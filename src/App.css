@@ -148,3 +148,9 @@ textarea {
   top: 2px;
   left: 6px;
 }
+
+.light-gray-bcg {
+  background-color: #ebedee;
+  height: calc(100vh - 59px);
+  padding-top: 36px;
+}
