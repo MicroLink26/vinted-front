@@ -1,8 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import Cookies from "js-cookie";
 import logo from "../assets/logo.svg";
 import "../styles/header.css";
 
 export default function Header({ userToken, setUserToken }) {
+  const navigate = useNavigate();
+
+  const handleDisconnect = () => {
+    Cookies.remove("token");
+    setUserToken("");
+    navigate("/");
+  };
   return (
     <header>
       <div className="container">
@@ -16,12 +25,7 @@ export default function Header({ userToken, setUserToken }) {
           {/* S'il y a un token affichage du bouton de déconnexion sinon affichage des boutons pour naviguer vers les pages de connexion */}
           {userToken ? (
             <>
-              <button
-                onClick={() => {
-                  setUserToken("");
-                }}
-                className="red-button"
-              >
+              <button onClick={handleDisconnect} className="red-button">
                 Se déconnecter
               </button>
               <Link to="/publish" className="green-button">

@@ -6,14 +6,14 @@ import { useState } from "react";
 //todo: utiliser variable d'environement
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_API);
 
-const payment = () => {
+const payment = ({ userToken }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [completed, setCompleted] = useState(false);
 
   if (!location.state) navigate("/");
   const { title, price, id } = location.state;
-  console.log(title, price, id);
+
   const formatNumber = (number) => {
     return number.toFixed(2).toString().replace(".", ",") + " €";
   };
@@ -24,7 +24,7 @@ const payment = () => {
   return (
     <>
       {!completed ? (
-        <div>
+        <main className="container">
           <Elements stripe={stripePromise}>
             <h2>Résumé de la comande</h2>
             <div>
@@ -45,9 +45,9 @@ const payment = () => {
               <div>{formatNumber(getTotal())}</div>
             </div>
             <div>
-              Il ne vous reste plus qu'une etape pour vous offrir
-              <span cass="bold">{title}</span>. Vous allez payer
-              <span cass="bold">{formatNumber(getTotal())}</span> (frais de
+              Il ne vous reste plus qu'une etape pour vous offrir ce
+              <span cass="bold"> {title}</span>. Vous allez payer
+              <span cass="bold"> {formatNumber(getTotal())}</span> (frais de
               protection et frais de port inclus).
             </div>
 
@@ -56,9 +56,10 @@ const payment = () => {
               amount={getTotal()}
               id={id}
               setCompleted={setCompleted}
+              userToken={userToken}
             />
           </Elements>
-        </div>
+        </main>
       ) : (
         <span>Paiement effectué ! </span>
       )}

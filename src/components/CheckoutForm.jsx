@@ -1,42 +1,66 @@
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { useState } from "react";
 
 const CheckoutForm = (props) => {
+  const [errorMessage, setErrorMessage] = useState("");
   const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // On récupère ici les données bancaires que l'utilisateur rentre
+
     const cardElement = elements.getElement(CardElement);
 
-    //console.log(props.amount);
-    // Demande de création d'un token via l'API Stripe
-    // On envoie les données bancaires dans la requête
     const stripeResponse = await stripe.createToken(cardElement, {
       name: props.title,
       amount: props.amount,
       title: props.title,
     });
-    //console.log(stripeResponse);
+
     const stripeToken = stripeResponse.token.id;
-    // Une fois le token reçu depuis l'API Stripe
-    // Requête vers notre serveur
-    // On envoie le token reçu depuis l'API Stripe
-    const response = await axios.post(
-      import.meta.env.VITE_API_URL + "/payment",
-      {
-        token: stripeToken,
-        amount: props.amount,
-        title: props.title,
-        name: props.title,
+    try {
+      const response = await axios.post(
+        import.meta.env.VITE_API_URL + "/payment",
+        {
+          token: stripeToken,
+          amount: props.amount,
+          title: props.title,
+          name: props.title,
+        }
+      );
+
+      if (response.data.status === "succeeded") {
+        //remove item from db
+        console.log(props.id, props.userToken);
+        try {
+          await axios.put(
+            import.meta.env.VITE_API_URL + "/offer/archive/" + props.id,
+            {},
+            {
+              headers: {
+                Authorization: "Bearer " + props.userToken,
+              },
+            }
+          );
+          //TODO: archiver plutôt que delete
+          // const deletedItem = await axios.delete(
+          //   import.meta.env.VITE_API_URL + "/offer/delete/" + props.id,
+          //   {
+          //     headers: {
+          //       Authorization: "Bearer " + props.userToken,
+          //
+          //     },
+          //   }
+          // );
+          props.setCompleted(true);
+        } catch (error) {
+          console.log(error);
+        }
       }
-    );
-    console.log(response.data);
-    // Si la réponse du serveur est favorable, la transaction a eu lieu
-    if (response.data.status === "succeeded") {
-      //remove item from db
-      props.setCompleted(true);
+    } catch (error) {
+      console.log(error);
+      setErrorMessage("Votre paiement est refusé");
     }
   };
 
@@ -44,6 +68,7 @@ const CheckoutForm = (props) => {
     <>
       <form onSubmit={handleSubmit}>
         <CardElement />
+        {errorMessage !== "" && <p>{errorMessage}</p>}
         <button className="green-button" type="submit">
           Valider
         </button>

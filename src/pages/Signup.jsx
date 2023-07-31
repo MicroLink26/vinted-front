@@ -46,7 +46,7 @@ export default function Signup({ setUserToken }) {
 
   return (
     <main className="container">
-      <form onSubmit={handleSubmit} className="login-form">
+      <form onSubmit={handleSubmit} className="custom-form">
         <h1>S'inscrire</h1>
 
         <input

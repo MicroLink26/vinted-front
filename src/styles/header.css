@@ -36,7 +36,7 @@ header .container > div {
   padding: 25px;
   position: absolute;
   top: 175px;
-  left: 75px;
+  left: calc((100% - 1024px) / 2);
   width: 360px;
   font-family: "Open Sans", sans-serif;
 }

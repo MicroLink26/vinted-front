@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
+import "../styles/publish.css";
+
 window.addEventListener(
   "dragover",
   function (e) {
@@ -26,7 +28,7 @@ function Publish({ userToken }) {
   const [etat, setEtat] = useState("");
   const [lieu, setLieu] = useState("");
   const [prix, setPrix] = useState("");
-  const [exchange, setExchange] = useState(false);
+
   const [published, setEPublished] = useState(false);
   const [previewPicture, setPreviewPicture] = useState(null);
   const [hoverClass, setHoverClass] = useState(false);
@@ -67,7 +69,6 @@ function Publish({ userToken }) {
     formData.append("condition", etat);
     formData.append("city", lieu);
     formData.append("price", prix);
-    formData.append("exchange", exchange);
 
     try {
       const response = await axios.post(
@@ -94,9 +95,7 @@ function Publish({ userToken }) {
   return processing ? (
     <Spinner />
   ) : (
-    <div className="publish">
-      <p>Vends ton article</p>
-
+    <main className="container publish">
       {!published ? (
         <form
           onDrag={(e) => {
@@ -106,8 +105,10 @@ function Publish({ userToken }) {
             e.preventDefault;
           }}
           onSubmit={handleSubmit}
+          className="custom-form"
         >
-          <div className="publishImg">
+          <h2>Vends ton article</h2>
+          <div className="publish-img">
             {previewPicture ? (
               <img
                 src={previewPicture}
@@ -130,7 +131,7 @@ function Publish({ userToken }) {
                   id="file"
                 />
                 <label htmlFor="file">Selectionnez votre photo</label>
-
+                <p>OU</p>
                 <div
                   id="drop_zone"
                   onDrop={(event) => {
@@ -145,42 +146,36 @@ function Publish({ userToken }) {
                   className={hoverClass ? "drop-hover" : ""}
                 >
                   <p>
-                    Glisse une image dans cette <i>zone</i>.
+                    Glisses une image dans cette <i>zone</i>.
                   </p>
                 </div>
               </>
             )}
           </div>
-          <div className="publishTitle">
-            <div>
-              <label htmlFor="titre">TITRE</label>{" "}
-              <input
-                type="text"
-                placeholder="titre"
-                id="titre"
-                value={title}
-                onChange={(event) => {
-                  setTitle(event.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <label htmlFor="description">DESCRIPTION</label>
-              <textarea
-                rows="4"
-                cols="50"
-                placeholder="description"
-                id="description"
-                value={description}
-                onChange={(event) => {
-                  setDescription(event.target.value);
-                }}
-              >
-                {" "}
-              </textarea>
-            </div>
+          <div>
+            <label htmlFor="titre">TITRE</label>{" "}
+            <input
+              type="text"
+              placeholder="titre"
+              id="titre"
+              value={title}
+              onChange={(event) => {
+                setTitle(event.target.value);
+              }}
+            />
+            <label htmlFor="description">DESCRIPTION</label>
+            <textarea
+              rows="4"
+              cols="50"
+              placeholder="description"
+              id="description"
+              value={description}
+              onChange={(event) => {
+                setDescription(event.target.value);
+              }}
+            ></textarea>
           </div>
-          <div className="publishDetail">
+          <div>
             <input
               type="text"
               placeholder="marque"
@@ -221,8 +216,6 @@ function Publish({ userToken }) {
                 setLieu(event.target.value);
               }}
             />
-          </div>
-          <div className="publishPrice">
             <input
               type="number"
               placeholder="prix"
@@ -231,23 +224,14 @@ function Publish({ userToken }) {
                 setPrix(event.target.value);
               }}
             />
-            <input
-              type="checkbox"
-              id="exchange"
-              name="exchange"
-              checked={exchange}
-              onChange={() => {
-                setExchange(!exchange);
-              }}
-            />
-            <label htmlFor="exchange">Je suis intéressé par les échanges</label>
           </div>
-          <button>Ajouter</button>
+
+          <button className="publish-button">Publier</button>
         </form>
       ) : (
         <p>Votre annonce est publiée</p>
       )}
-    </div>
+    </main>
   );
 }
 

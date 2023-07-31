@@ -18,8 +18,6 @@ export default function Home() {
           import.meta.env.VITE_API_URL + "/offers"
         );
 
-        //console.log(response.data);
-
         setOffersList(response.data.offers);
         setIsLoading(false);
       } catch (error) {
@@ -38,7 +36,6 @@ export default function Home() {
 
       <div className="container offers-bloc">
         {offersList.map((offer) => {
-          //console.log("offer>>>", offer.product_price);
           return <OfferCard key={offer._id} offer={offer} />;
         })}
       </div>

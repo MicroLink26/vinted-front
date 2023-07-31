@@ -53,7 +53,7 @@ export default function Login({ setUserToken }) {
     <Spinner />
   ) : (
     <main className="container">
-      <form onSubmit={handleSubmit} className="login-form">
+      <form onSubmit={handleSubmit} className="custom-form">
         <h2>Se connecter</h2>
 
         <input

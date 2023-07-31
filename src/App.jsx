@@ -13,12 +13,7 @@ import Publish from "./pages/Publish";
 import Payment from "./pages/Payment";
 
 function App() {
-  // Le state aura pour valeur initiale la valeur du cookie "token" s'il exitste sinon elle aura pour valeur une string vide
   const [userToken, setUserToken] = useState(Cookies.get("token") || "");
-  // useEffect(() => {
-  //   const tokenCookies = Cookies.get("token");
-  //   setUserToken(tokenCookies);
-  // }, []);
 
   return (
     <Router>
