@@ -1,22 +1,39 @@
-.offer-page {
+.offer-container {
   display: flex;
   gap: 10px;
 }
+.offer {
+  background-color: #ebedee;
+  padding: 40px;
+  height: calc(100vh - 60px);
+}
 
-.offer-page > div:first-child {
-  border: 1px solid black;
+.offer-container > div:first-child {
   width: 60%;
   height: 600px;
 }
-.offer-page > div:last-child {
-  border: 1px solid black;
+.offer-container > div:last-child {
+  background-color: white;
   width: 40%;
   height: 600px;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.offer-page img {
+.offer-container img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+.offer-container img.avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.offer-container .price {
+  font-weight: 900;
 }

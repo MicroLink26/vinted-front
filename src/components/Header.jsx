@@ -19,13 +19,13 @@ export default function Header({ userToken, setUserToken }) {
           <Link to="/">
             <img src={logo} alt="logo"></img>
           </Link>
-          <div class="search-container">
+          <div className="search-container">
             <input
               type="text"
-              class="search-input"
+              className="search-input"
               placeholder="Recherche des articles"
             ></input>
-            <i class="fa-solid fa-search search-input-icon"></i>
+            <i className="fa-solid fa-search search-input-icon"></i>
           </div>
         </div>
 
