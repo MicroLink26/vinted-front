@@ -25,7 +25,7 @@ const payment = ({ userToken }) => {
   return (
     <>
       {!completed ? (
-        <main class="light-gray-bcg">
+        <main className="light-gray-bcg">
           <Elements stripe={stripePromise}>
             <div className="payment-container">
               <h2>Résumé de la commande</h2>

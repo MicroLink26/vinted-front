@@ -28,18 +28,6 @@
   width: 100%;
 }
 
-custom-form {
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 10px 0;
-  align-items: center;
-}
-custom-form input {
-  width: 90%;
-}
-
 img.preview {
   height: 100px;
   width: 100px;
@@ -83,8 +71,46 @@ img.preview {
   border: 1px black dotted;
   width: 200px;
   height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#drop_zone p {
+  text-align: center;
 }
 .drop-hover {
   border: 1px gray dotted;
   background-color: lightgrey;
+}
+
+.label-file > span {
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+.label-file {
+  color: #0ab1ba;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.input-design-default {
+  align-items: center;
+  border: 1px solid #0ab1ba;
+  border-radius: 4px;
+  display: flex;
+  height: 45px;
+  justify-content: center;
+}
+.input-design-default {
+  width: 200px;
+}
+.input-file {
+  display: none;
+}
+
+button,
+input {
+  outline: none;
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-
+import "../styles/offer.css";
 export default function Signup({ setUserToken }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");

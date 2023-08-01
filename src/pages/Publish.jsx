@@ -121,16 +121,21 @@ function Publish({ userToken }) {
               />
             ) : (
               <>
-                <input
-                  type="file"
-                  onChange={(event) => {
-                    downloadFile(event);
-                  }}
-                  className="inputfile"
-                  name="file"
-                  id="file"
-                />
-                <label htmlFor="file">Selectionnez votre photo</label>
+                <div className="input-design-default">
+                  <label htmlFor="file" className="label-file">
+                    <span className="input-sign">+</span>
+                    <span>Ajoute une photo</span>
+                  </label>
+                  <input
+                    id="file"
+                    type="file"
+                    className="input-file"
+                    onChange={(event) => {
+                      downloadFile(event);
+                    }}
+                  />
+                </div>
+
                 <p>OU</p>
                 <div
                   id="drop_zone"
