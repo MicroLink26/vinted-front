@@ -36,7 +36,9 @@ export default function Login({ setUserToken }) {
         setProcessing(false);
         //si redirigé d'une autre page
         if (location.state) {
-          navigate(location.state.from);
+          navigate(location.state.from, {
+            state: { ...location.state },
+          });
         } else navigate("/");
         // sinon naviguer vers la page d'accueil
       } catch (error) {

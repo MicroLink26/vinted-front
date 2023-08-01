@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/payment.css";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_API);
@@ -15,6 +15,12 @@ const payment = ({ userToken }) => {
   if (!location.state) navigate("/");
   const { title, price, id } = location.state;
 
+  useEffect(() => {
+    if (userToken === "")
+      navigate("/login", {
+        state: { from: "/payment", title: title, price: price, id: id },
+      });
+  }, []);
   const formatNumber = (number) => {
     return number.toFixed(2).toString().replace(".", ",") + " €";
   };
